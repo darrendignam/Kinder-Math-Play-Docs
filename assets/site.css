@@ -491,11 +491,23 @@ img.zoomable:focus-visible {
   transform: scaleY(0);
 }
 .sky-owl.blink .owl-lids circle {
-  animation: blink 0.22s ease-in-out;
+  animation: blink 1.4s;
 }
+/* Lids drift down, stay shut for about half a second, then lift a little slower. */
 @keyframes blink {
-  50% {
+  0% {
+    transform: scaleY(0);
+    animation-timing-function: ease-in;
+  }
+  28% {
     transform: scaleY(1);
+  }
+  68% {
+    transform: scaleY(1);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: scaleY(0);
   }
 }
 
