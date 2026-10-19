@@ -180,6 +180,14 @@ stars to colour in.
   <figcaption>A sheet ready to print</figcaption>
 </figure>
 
+Sheets can hide the middle number instead of the answer. Your child counts on from the
+first number to reach the total, and writes how many were added:
+
+<figure>
+  <img class="screen" loading="lazy" src="{{ '/assets/screens/print-missing-middle.webp' | relative_url }}" width="1000" height="1415" style="max-width: 22rem" alt="A printed sheet of missing-middle sums with Animals pictures, such as 3 + _ = 5, with a dot grid and an empty box in the middle of each row">
+  <figcaption>A missing-middle sheet (3 + _ = 5), with the Animals pictures</figcaption>
+</figure>
+
 - **Android:** <span class="ui">🖨️ Print</span> opens Android's print screen. Choose a
   printer, or **Save as PDF**.
 - **iPad:** <span class="ui">🖨️ Print</span> uses AirPrint;
