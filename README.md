@@ -30,6 +30,9 @@ docker compose up
    Pages settings.
 3. Update the URLs in `.github/ISSUE_TEMPLATE/config.yml` and in the store listings.
 
-## Licences
+## Licence
 
-The Andika font in `assets/fonts` is under the SIL Open Font License (`OFL.txt`).
+Copyright Darren Dignam, all rights reserved. This repository is public so the site and
+issue tracker can be used, but its contents are not licensed for reuse; see
+[LICENSE](LICENSE). The Andika font in `assets/fonts` is under the SIL Open Font License
+(`OFL.txt`).

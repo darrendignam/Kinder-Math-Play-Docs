@@ -1,0 +1,30 @@
+Copyright (c) 2026 Darren Dignam. All rights reserved.
+
+This repository is public so that people can read the Kinder Math website and use its
+issue tracker and discussions. Being public does not make its contents free to reuse.
+
+The contents of this repository, including the text, screenshots, artwork, icons, the
+Kinder Math name and owl, and the design and code of the website, are the property of
+Darren Dignam and are not licensed for reuse. You may view them on GitHub and on the
+website, and GitHub's Terms of Service let GitHub users view and fork public
+repositories on GitHub. No other rights are granted: you may not copy, publish,
+distribute, modify or make commercial use of any part of this repository, outside
+GitHub, without prior written permission.
+
+Exceptions
+
+- The Andika font in assets/fonts is by SIL International and is licensed under the
+  SIL Open Font License, Version 1.1. See assets/fonts/OFL.txt.
+- Emoji in the screenshots are drawn by the device's emoji font and belong to its
+  makers, under their own licences.
+- Google Play and Android are trademarks of Google LLC. Apple, App Store and iPad are
+  trademarks of Apple Inc. Kinder Math is not affiliated with or endorsed by either.
+
+Feedback
+
+Issues, discussion posts and other feedback stay yours, but by posting them you allow
+Darren Dignam to use the ideas in them to improve Kinder Math, with no obligation or
+payment.
+
+To ask for permission, open a discussion at
+https://github.com/darrendignam/Kinder-Math-Play-Docs/discussions
