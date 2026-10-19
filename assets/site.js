@@ -28,9 +28,9 @@ function setUpLightbox() {
   dialog.addEventListener("close", () => image.removeAttribute("src"));
 }
 
-// The home page sky stays daytime while the hero is in view, then turns to night over the
+// The sky stays daytime while the top of the page is in view, then turns to night over the
 // next half screen of scrolling; the colour theme flips with it halfway. Text sits on the
-// bare sky only in the hero, so the dusk in between is kept short.
+// bare sky only near the top, so the dusk in between is kept short.
 function setUpSky() {
   if (!document.querySelector(".sky")) return;
   const root = document.documentElement;

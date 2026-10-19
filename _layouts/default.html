@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ site.lang }}"{% if page.sky %} class="sky-page" data-theme="light"{% endif %}>
+<html lang="{{ site.lang }}" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,7 @@
 </head>
 <body>
   <a class="skip" href="#content">Skip to content</a>
-  {% if page.sky %}{% include sky.html %}{% endif %}
+  {% include sky.html %}
   <header class="site-header">
     <div class="wrap">
       <a class="brand" href="{{ '/' | relative_url }}">

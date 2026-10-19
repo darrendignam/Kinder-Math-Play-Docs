@@ -97,11 +97,18 @@ h2 {
 .wrap {
   max-width: var(--width);
   margin: 0 auto;
-  padding: 0 1rem;
+  padding-inline: 1rem;
 }
 
+.site-header,
+.site-footer {
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: blur(8px);
+}
 .site-header {
-  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 1;
   border-bottom: 1px solid var(--line);
 }
 .site-header .wrap {
@@ -182,16 +189,38 @@ main {
 .button {
   display: inline-block;
   padding: 0.7rem 1.3rem;
+  border: 2px solid var(--accent);
   border-radius: var(--radius);
   font-weight: 700;
   text-decoration: none;
   background: var(--accent);
   color: var(--accent-ink);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--accent) 45%, transparent);
 }
 .button.secondary {
   background: var(--surface);
   color: var(--accent);
-  border: 2px solid var(--accent);
+}
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--accent) 35%, transparent);
+  background: color-mix(in srgb, var(--accent) 85%, var(--ink));
+  border-color: color-mix(in srgb, var(--accent) 85%, var(--ink));
+}
+.button.secondary:hover,
+.button.secondary:focus-visible {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 50%, transparent);
+  outline-offset: 3px;
 }
 .note {
   color: var(--muted);
@@ -231,13 +260,26 @@ figcaption {
   margin-top: 0.5rem;
 }
 
+/* Long text gets its own panel so it stays readable while the sky behind changes. */
 .prose {
-  max-width: 46rem;
+  max-width: 50rem;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) * 1.5);
+  box-shadow: 0 10px 30px rgb(30 27 75 / 0.12);
+}
+.prose > :first-child {
+  margin-top: 0;
+}
+.prose .card,
+.prose .toc {
+  background: color-mix(in srgb, var(--accent-soft) 45%, var(--surface));
 }
 .prose figure {
   margin: 1.5rem 0;
 }
-.prose li + li {
+.prose li:not(.card) + li {
   margin-top: 0.3rem;
 }
 
@@ -276,7 +318,6 @@ td {
 
 .site-footer {
   border-top: 1px solid var(--line);
-  background: var(--surface);
   font-size: 1rem;
   color: var(--muted);
 }
@@ -305,6 +346,11 @@ td {
 h2,
 a {
   transition: color var(--theme-fade), background-color var(--theme-fade), border-color var(--theme-fade);
+}
+
+.button,
+.lightbox-close {
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 /* Lightbox */
@@ -365,21 +411,14 @@ img.zoomable:focus-visible {
   background: #ffffff;
   cursor: pointer;
 }
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
+  transform: scale(1.1);
+  background: #ede9fe;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.35);
+}
 
-/* Home page sky: day at the top, night once scrolled. */
-.sky-page body {
-  background: transparent;
-}
-.sky-page .site-header,
-.sky-page .site-footer {
-  background: color-mix(in srgb, var(--surface) 82%, transparent);
-  backdrop-filter: blur(8px);
-}
-.sky-page .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
+/* Sky behind every page: day at the top, night once scrolled. */
 
 .sky {
   position: fixed;
