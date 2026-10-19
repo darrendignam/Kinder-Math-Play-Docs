@@ -175,6 +175,11 @@ Tap <span class="ui">🖨️ Print / PDF</span> on a worksheet in the editor, or
 The sheet is laid out on A4, with spaces for a name, the date, parent notes and five
 stars to colour in.
 
+<figure>
+  <img class="screen" loading="lazy" src="{{ '/assets/screens/print.webp' | relative_url }}" width="800" height="1280" style="max-width: 22rem" alt="A worksheet laid out on an A4 page, ready to print">
+  <figcaption>A sheet ready to print</figcaption>
+</figure>
+
 - **Android:** <span class="ui">🖨️ Print</span> opens Android's print screen. Choose a
   printer, or **Save as PDF**.
 - **iPad:** <span class="ui">🖨️ Print</span> uses AirPrint;
