@@ -11,35 +11,36 @@
   src: url("fonts/andika-latin-700-normal.woff2") format("woff2");
 }
 
-/* Same palette as the app (src/client/styles.css). */
+/* Light values are the app's palette (src/client/styles.css). The home page sets data-theme
+   as it scrolls from day to night; other pages follow the system setting. */
 :root {
-  --ink: #1f2937;
-  --muted: #6b7280;
-  --accent: #7c3aed;
-  --accent-ink: #ffffff;
-  --accent-soft: #ede9fe;
-  --divider: #dc2626;
-  --success: #16a34a;
-  --surface: #ffffff;
-  --background: #f3f0ff;
-  --line: #d1d5db;
+  color-scheme: light dark;
+  --ink: light-dark(#1f2937, #e5e7eb);
+  --muted: light-dark(#6b7280, #a5b4fc);
+  --accent: light-dark(#7c3aed, #c4b5fd);
+  --accent-ink: light-dark(#ffffff, #1e1b4b);
+  --accent-soft: light-dark(#ede9fe, #3b2a7a);
+  --surface: light-dark(#ffffff, #1e1b4b);
+  --background: light-dark(#f3f0ff, #13112e);
+  --line: light-dark(#d1d5db, #3f3a78);
   --radius: 14px;
   --width: 64rem;
+  --theme-fade: 0.5s ease;
+}
+:root[data-theme="light"] {
   color-scheme: light;
 }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --ink: #e5e7eb;
-    --muted: #9ca3af;
-    --accent: #a78bfa;
-    --accent-ink: #1e1b4b;
-    --accent-soft: #2e1065;
-    --surface: #1c1830;
-    --background: #120f22;
-    --line: #3b3556;
-    color-scheme: dark;
-  }
+/* The app's sky (src/shared/appIcon.ts). */
+:root {
+  --sky-top: #f0f9ff;
+  --sky-bottom: #bae6fd;
+  --night-top: #1e1b4b;
+  --night-bottom: #312e81;
+  --night: 0;
 }
 
 * {
@@ -53,6 +54,7 @@ body {
   line-height: 1.6;
   color: var(--ink);
   background: var(--background);
+  transition: color var(--theme-fade), background-color var(--theme-fade);
 }
 
 a {
@@ -292,4 +294,160 @@ td {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.site-header,
+.site-footer,
+.card,
+.toc,
+.screen,
+.button,
+h2,
+a {
+  transition: color var(--theme-fade), background-color var(--theme-fade), border-color var(--theme-fade);
+}
+
+/* Lightbox */
+img.zoomable {
+  cursor: zoom-in;
+}
+img.zoomable:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.lightbox {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 1rem;
+  border: 0;
+  background: transparent;
+  color: #ffffff;
+  cursor: zoom-out;
+}
+.lightbox[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.lightbox::backdrop {
+  background: rgb(15 12 40 / 0.88);
+}
+.lightbox img {
+  max-width: 100%;
+  max-height: calc(100vh - 6rem);
+  object-fit: contain;
+  border-radius: var(--radius);
+  background: #ffffff;
+  box-shadow: 0 20px 60px rgb(0 0 0 / 0.5);
+}
+.lightbox p {
+  margin: 0;
+  text-align: center;
+}
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  border-radius: 50%;
+  font: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #1e1b4b;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+/* Home page sky: day at the top, night once scrolled. */
+.sky-page body {
+  background: transparent;
+}
+.sky-page .site-header,
+.sky-page .site-footer {
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  backdrop-filter: blur(8px);
+}
+.sky-page .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.sky {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: linear-gradient(var(--sky-top), var(--sky-bottom));
+}
+.sky svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.sky-day {
+  position: absolute;
+  inset: 0;
+  opacity: calc(1 - var(--night));
+  transform: translateY(calc(var(--night) * -25vh));
+}
+.sky-night {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(var(--night-top), var(--night-bottom));
+  opacity: var(--night);
+}
+.sky-night svg {
+  transform: translateY(calc((1 - var(--night)) * 12vh));
+}
+.sky-owl {
+  position: absolute;
+  right: max(1.5rem, calc((100vw - var(--width)) / 2 - 13rem));
+  bottom: -2vh;
+  height: min(34vh, 24vw);
+  width: auto;
+  transform: rotate(calc(var(--night) * -6deg));
+  transform-origin: bottom center;
+}
+@media (max-width: 52rem) {
+  .sky-owl {
+    height: 30vw;
+    opacity: 0.6;
+  }
+}
+
+.cloud {
+  animation: drift 40s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  to {
+    translate: calc(var(--drift) * 60px) 0;
+  }
+}
+.star {
+  animation: twinkle 4s ease-in-out infinite;
+}
+@keyframes twinkle {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud,
+  .star {
+    animation: none;
+  }
+  :root {
+    --theme-fade: 0s;
+  }
 }
