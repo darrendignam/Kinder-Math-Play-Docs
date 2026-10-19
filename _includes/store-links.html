@@ -1,0 +1,8 @@
+<div class="stores">
+  {% if site.play_store_url != "" %}<a class="button" href="{{ site.play_store_url }}">Get it on Google Play</a>{% endif %}
+  {% if site.app_store_url != "" %}<a class="button" href="{{ site.app_store_url }}">Download on the App Store</a>{% endif %}
+  <a class="button secondary" href="{{ '/guide/' | relative_url }}">Read the guide</a>
+</div>
+{% if site.play_store_url == "" and site.app_store_url == "" %}
+<p class="note">Coming soon to Google Play and the App Store, for Android tablets and iPads.</p>
+{% endif %}

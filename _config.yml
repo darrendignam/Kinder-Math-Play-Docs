@@ -1,0 +1,28 @@
+title: Kinder Math
+description: Friendly maths worksheets for young children. Count, add and take away on a tablet. No ads, no accounts, nothing leaves the device.
+author: Darren Dignam
+lang: en-GB
+
+# Served from darrendignam.github.io/Kinder-Math-Play-Docs. When a custom domain is set
+# up (a CNAME file in this folder), change url to it and baseurl to "".
+url: https://darrendignam.github.io
+baseurl: /Kinder-Math-Play-Docs
+
+repository: darrendignam/Kinder-Math-Play-Docs
+issues_url: https://github.com/darrendignam/Kinder-Math-Play-Docs/issues
+new_issue_url: https://github.com/darrendignam/Kinder-Math-Play-Docs/issues/new/choose
+discussions_url: https://github.com/darrendignam/Kinder-Math-Play-Docs/discussions
+
+contact_email: TODO@example.com
+
+# Fill in when the listings are live; the pages show "coming soon" while these are empty.
+play_store_url: ""
+app_store_url: ""
+
+kramdown:
+  smart_quotes: apos,apos,quot,quot
+  typographic_symbols: { hellip: "..." }
+
+exclude:
+  - README.md
+  - docker-compose.yml

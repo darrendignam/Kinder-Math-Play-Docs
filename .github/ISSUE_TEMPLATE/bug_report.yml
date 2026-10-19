@@ -1,0 +1,48 @@
+name: 🐞 Report a problem
+description: Something in Kinder Math is not working as it should.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping make Kinder Math better. Issues are **public**: please do not include children's names, photos or other personal details.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+      placeholder: |
+        1. Opened the grown-ups' area
+        2. Tapped Print / PDF on a worksheet
+        3. Expected the print screen, but nothing happened
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Device type
+      options:
+        - Android tablet
+        - Android phone
+        - iPad
+        - iPhone
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: Device and system version
+      placeholder: Lenovo Tab M11, Android 14
+    validations:
+      required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: App version
+      description: Shown in your device's app settings, or on the store page.
+      placeholder: "1.0"
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Optional. Crop out anything personal first.

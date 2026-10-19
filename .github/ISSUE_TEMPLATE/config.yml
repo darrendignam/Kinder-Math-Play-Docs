@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💡 Ideas and questions
+    url: https://github.com/darrendignam/Kinder-Math-Play-Docs/discussions
+    about: Suggest a feature, ask how something works, or share how it went.
+  - name: 📖 User guide
+    url: https://darrendignam.github.io/Kinder-Math-Play-Docs/guide/
+    about: How to use Kinder Math.
+  - name: 🔒 Privacy questions
+    url: https://darrendignam.github.io/Kinder-Math-Play-Docs/privacy/
+    about: The privacy policy, and an email address for anything private.
