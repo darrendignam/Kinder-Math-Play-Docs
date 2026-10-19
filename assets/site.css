@@ -427,7 +427,7 @@ img.zoomable:focus-visible {
   overflow: hidden;
   background: linear-gradient(var(--sky-top), var(--sky-bottom));
 }
-.sky svg {
+:is(.sky-day, .sky-night) > svg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -454,6 +454,8 @@ img.zoomable:focus-visible {
   bottom: -2vh;
   height: min(34vh, 24vw);
   width: auto;
+  aspect-ratio: 408 / 512;
+  overflow: visible;
   transform: rotate(calc(var(--night) * -6deg));
   transform-origin: bottom center;
 }
@@ -481,9 +483,26 @@ img.zoomable:focus-visible {
   }
 }
 
+/* The lids are the eye circles in the owl's brown, squashed up out of sight until
+   assets/site.js adds .blink now and then. */
+.owl-lids circle {
+  transform-box: fill-box;
+  transform-origin: top center;
+  transform: scaleY(0);
+}
+.sky-owl.blink .owl-lids circle {
+  animation: blink 0.22s ease-in-out;
+}
+@keyframes blink {
+  50% {
+    transform: scaleY(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cloud,
-  .star {
+  .star,
+  .sky-owl.blink .owl-lids circle {
     animation: none;
   }
   :root {

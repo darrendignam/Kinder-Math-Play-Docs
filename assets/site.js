@@ -55,5 +55,26 @@ function setUpSky() {
   update();
 }
 
+// Blinks at uneven gaps, sometimes twice in a row, so it looks alive rather than on a loop.
+function setUpOwlBlink() {
+  const owl = document.querySelector(".sky-owl");
+  if (!owl || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  function blink(times) {
+    owl.classList.remove("blink");
+    void owl.getBoundingClientRect();
+    owl.classList.add("blink");
+    if (times > 1) setTimeout(() => blink(times - 1), 300);
+    else setTimeout(scheduleNext, 3000 + Math.random() * 6000);
+  }
+
+  function scheduleNext() {
+    blink(Math.random() < 0.25 ? 2 : 1);
+  }
+
+  setTimeout(scheduleNext, 1500 + Math.random() * 2000);
+}
+
 setUpLightbox();
 setUpSky();
+setUpOwlBlink();
